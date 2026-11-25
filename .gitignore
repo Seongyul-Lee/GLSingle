@@ -1,0 +1,30 @@
+# Visual Studio 캐시·사용자 설정
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.ncb
+*.opt
+*.aps
+*.VC.db
+*.VC.opendb
+
+# 빌드 산출물
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ipch/
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.pch
+*.tlog
+
+# 100MB 제한을 넘는 OpenCV 재배포 DLL (OpenCV 설치본에서 복사)
+opencv_world*.dll
+
+# 에이전트 도구 상태
+.omc/

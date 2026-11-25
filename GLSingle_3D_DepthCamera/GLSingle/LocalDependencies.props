@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OpenCVRoot Condition="'$(OpenCVRoot)'==''">C:\opencv 4120</OpenCVRoot>
+    <FreeGLUTRoot Condition="'$(FreeGLUTRoot)'==''">C:\freeglut-3.8.0</FreeGLUTRoot>
+    <DependencyDebugSuffix Condition="'$(Configuration)'=='Debug'">d</DependencyDebugSuffix>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(OpenCVRoot)\build\include;$(FreeGLUTRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OpenCVRoot)\build\x64\vc16\lib;$(FreeGLUTRoot)\x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4120$(DependencyDebugSuffix).lib;freeglut$(DependencyDebugSuffix).lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Target Name="CopyLocalDependencyDlls" AfterTargets="Build" Condition="'$(Platform)'=='x64'">
+    <ItemGroup>
+      <DependencyRuntime Include="$(OpenCVRoot)\build\x64\vc16\bin\opencv_world4120$(DependencyDebugSuffix).dll" />
+      <DependencyRuntime Include="$(OpenCVRoot)\build\x64\vc16\bin\opencv_videoio_ffmpeg4120_64.dll" />
+      <DependencyRuntime Include="$(FreeGLUTRoot)\x64\bin\freeglut$(DependencyDebugSuffix).dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DependencyRuntime)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+    <!-- Seed each output folder once; never overwrite a database edited there. -->
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)..\test.db" DestinationFiles="$(OutDir)test.db" Condition="!Exists('$(OutDir)test.db')" />
+  </Target>
+</Project>

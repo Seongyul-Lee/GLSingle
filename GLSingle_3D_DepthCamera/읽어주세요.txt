@@ -1,0 +1,15 @@
+﻿GLSingle 학생 조회 프로젝트
+
+실행: 압축을 모두 푼 다음 x64\Release\GLSingle.exe를 실행하세요.
+메뉴: 데이터베이스 → 학생 조회
+DB: 실행 파일과 같은 폴더의 test.db를 조회합니다.
+
+수정/빌드: GLSingle.sln을 Visual Studio에서 열고 x64 플랫폼을 선택하세요.
+SQLite 소스는 SQLite 폴더에 포함되어 있고, 압축본의 프로젝트 경로는 상대 경로로 조정했습니다.
+OpenCV 및 freeglut 개발 파일은 별도 설치가 필요합니다.
+현재 빌드 경로: C:\opencv 4120 및 C:\freeglut-3.8.0
+경로가 다르면 GLSingle\LocalDependencies.props에서 수정하세요.
+Visual Studio C++/MFC 빌드 도구가 필요하며, 다른 PC에서 실행하려면 Microsoft Visual C++ x64 런타임이 필요할 수 있습니다.
+
+포함: 수정된 소스, 솔루션/프로젝트, 리소스, SQLite 소스, test.db, Release 실행 파일 및 DLL.
+Visual Studio 캐시, 중간 빌드 파일, 이전 백업은 제외했습니다.
